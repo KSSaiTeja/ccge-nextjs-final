@@ -1,0 +1,71 @@
+@use '../utils' as *;
+
+/* Search Results Styles */
+.tp-search-results {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+
+  &-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-strong, #2b2b2b);
+    margin-bottom: 15px;
+  }
+}
+
+.search-results-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  display: block;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--brand-blue-100, #e6f0f8);
+    border-color: var(--brand-blue-300, #9fc3e3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(47, 118, 183, 0.15);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.search-result-content {
+  h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-strong, #2b2b2b);
+    margin: 0 0 4px 0;
+  }
+
+  .search-result-category {
+    font-size: 14px;
+    color: var(--text-muted, #575757);
+    background: var(--brand-blue-100, #e6f0f8);
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-block;
+  }
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-muted, #575757);
+  font-style: italic;
+  margin: 20px 0;
+}
+
+/* Keep original search course styling - no custom overrides needed */

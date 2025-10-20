@@ -1,0 +1,56 @@
+// CCGE Live Courses Styles
+.tp-live-thumb-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+
+  .live-badge {
+    background: rgba(230, 30, 36, 0.95);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(230, 30, 36, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(230, 30, 36, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(230, 30, 36, 0.6);
+  }
+}
+
+.live-students-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text-strong);
+  font-weight: 500;
+
+  i {
+    color: var(--color-primary);
+  }
+}
+
+.tp-live-meta {
+  margin-bottom: 25px;
+}
+
+.tp-live-join {
+  .tp-btn-border {
+    i {
+      margin-left: 8px;
+    }
+  }
+}
+

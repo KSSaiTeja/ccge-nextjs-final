@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import '~bootstrap/scss/bootstrap';
+@import 'swiper/css/bundle';
+@import "slick-carousel/slick/slick.css";
+@import '../../public/assets/scss/main.scss';
+
+:root {
+  /* Blues */
+  --brand-blue-800: #17486f;
+  --brand-blue-700: #1f5b8f;
+  --brand-blue-600: #2f76b7;
+  --brand-blue-500: #3d86c4;
+  --brand-blue-400: #6ba6d6;
+  --brand-blue-300: #9fc3e3;
+  --brand-blue-100: #e6f0f8;
+
+  /* Reds */
+  --brand-red-700: #c4181e;
+  --brand-red-600: #e61e24;
+  --brand-red-500: #f03a3f;
+  --brand-red-400: #ff6166;
+  --brand-red-300: #ffa3a6;
+  --brand-red-100: #ffe5e6;
+
+  /* Neutrals */
+  --text-strong: #2b2b2b;
+  --text-muted: #575757;
+
+  /* Roles */
+  --color-primary: var(--brand-blue-600);
+  --color-primary-strong: var(--brand-blue-700);
+  --color-accent: var(--brand-red-600);
+  --color-accent-soft: var(--brand-red-400);
+  --gradient-accent-red: linear-gradient(
+    180deg,
+    var(--brand-red-400),
+    var(--brand-red-600)
+  );
+}

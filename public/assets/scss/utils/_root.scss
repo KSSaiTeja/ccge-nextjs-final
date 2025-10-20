@@ -1,0 +1,54 @@
+@use 'colors' as *;
+@use 'typography' as *;
+
+:root {
+    /* Brand Blues */
+    --brand-blue-800: #17486f;
+    --brand-blue-700: #1f5b8f;
+    --brand-blue-600: #2f76b7;
+    --brand-blue-500: #3d86c4;
+    --brand-blue-400: #6ba6d6;
+    --brand-blue-300: #9fc3e3;
+    --brand-blue-100: #e6f0f8;
+
+    /* Brand Reds */
+    --brand-red-700: #c4181e;
+    --brand-red-600: #e61e24;
+    --brand-red-500: #f03a3f;
+    --brand-red-400: #ff6166;
+    --brand-red-300: #ffa3a6;
+    --brand-red-100: #ffe5e6;
+
+    /* Neutrals */
+    --text-strong: #2b2b2b;
+    --text-muted: #575757;
+
+    /* Brand Roles */
+    --color-primary: var(--brand-blue-600);
+    --color-primary-strong: var(--brand-blue-700);
+    --color-accent: var(--brand-red-600);
+    --color-accent-soft: var(--brand-red-400);
+    --gradient-accent-red: linear-gradient(
+        180deg,
+        var(--brand-red-400),
+        var(--brand-red-600)
+    );
+
+    /**
+    @font family declaration
+    */
+    @each $ff, $shades in $font-family {
+        @each $shade, $value in $shades {
+            --tp-#{$ff}-#{$shade}: #{$value};
+        }
+    }
+
+    /**
+    @color declaration
+    */
+    @each $color, $shades in $colors {
+        @each $shade, $value in $shades {
+            --tp-#{$color}-#{$shade}: #{$value};
+        }
+    }
+}

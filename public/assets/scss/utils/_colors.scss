@@ -1,0 +1,71 @@
+$colors: (
+    'common': (
+        'white': #ffffff,
+        'black': #000,
+        'black-1': #010F1C,
+    ),
+    'grey': (
+        '1':#F6F4EE,
+        '2':#84807B,
+        '3':#55585B,
+        '4':#EFEDE7,
+        '5':#636366,
+        '6':#4F5158,
+    ),
+    'red': (
+        '1': #e61e24,
+        '2': #c4181e,
+        '3': #f03a3f,
+        '4': #ff6166,
+        '5': #ffa3a6,
+        '6': #ffe5e6,
+    ),
+    'blue': (
+        '1': #e6f0f8,
+        '2': #9fc3e3,
+        '3': #6ba6d6,
+        '4': #3d86c4,
+        '5': #2f76b7,
+        '6': #1f5b8f,
+        '7': #17486f,
+    ),
+    'heading': (
+        'primary': #2b2b2b,
+        '2': #17486f,
+        '3': #1f5b8f,
+        '4': #2b2b2b,
+    ),
+    'text': (
+        'body': #575757,
+        'strong': #2b2b2b,
+        'muted': #575757,
+    ),
+    'theme': (
+        'primary': #2f76b7,
+        'secondary': #3d86c4,
+        '3': #e61e24,
+        '4': #c4181e,
+        '5': #f03a3f,
+        '6': #17486f,
+        '7': #1f5b8f,
+        '8': #6ba6d6,
+    ),
+    'dashboard': (
+        'primary': #2f76b7,
+        'secondary': #3d86c4,
+        '3': #6ba6d6,
+        'danger' : #e61e24,
+        'sucess' : #0F9F55,
+        'warning' : #f03a3f,
+        'info' : #3d86c4,
+    ),
+    'border': (
+        'primary': #EAEBED,
+        '2': #E4E2DC,
+    )
+);
+
+$white : #fff;
+$black : #000;
+$theme-primary : #2f76b7;
+$border-primary : #EAEBED;
