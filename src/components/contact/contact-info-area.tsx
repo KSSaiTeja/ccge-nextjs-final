@@ -3,23 +3,23 @@ import { EmailThree, LocationFour, TelSvgTwo } from "../svg";
 const contactInfoData = [
     {
         icon: <EmailThree />,
-        title: 'Feedbacks',
-        description: 'Speak to our Friendly team.',
-        linkText: 'Support@gmail.com',
-        href: 'mailto:Support@gmail.com'
+        title: 'Email Us',
+        description: 'Get in touch via email',
+        linkText: 'info@ccge.in',
+        href: 'mailto:info@ccge.in'
     },
     {
         icon: <TelSvgTwo />,
         title: 'Call Us',
-        description: 'Mon-Fri from 8am to 5pm',
-        linkText: '+1(555) 000-0000',
-        href: 'tel:+15550000000'
+        description: 'Mon-Sat from 9am to 6pm',
+        linkText: '+91 96666 60713 / 14',
+        href: 'tel:+919666660713'
     },
     {
         icon: <LocationFour />,
         title: 'Visit Us',
-        description: 'Visit our office HQ.',
-        linkText: '77 Robinson Road #33-01',
+        description: 'Come visit our office',
+        linkText: 'Hyderabad, Telangana, India',
         href: '#'
     }
 ];

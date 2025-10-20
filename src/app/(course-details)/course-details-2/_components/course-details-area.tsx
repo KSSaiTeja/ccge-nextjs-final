@@ -2,13 +2,9 @@ import { ICourseDT } from "@/types/course-d-t";
 import CourseDetailsBox from "./course-details-box";
 import CourseDetailsLists from "./course-details-lists";
 import CourseDetailsBreadcrumbContent from "./course-details-breadcrumb-content";
-import CourseDetailsCurriculum from "@/components/course/details/course-details-curriculum";
-import CourseDetailsFeaturedReviews from "@/components/course/details/course-details-featured-reviews";
 import CourseDetailsInfo from "@/components/course/details/course-details-info";
-import CourseDetailsInstructor from "@/components/course/details/course-details-instructor";
 import CourseDetailsNav from "@/components/course/details/course-details-nav";
 import CourseDetailsRatingReviews from "@/components/course/details/course-details-rating-reviews";
-import CourseDetailsReviewForm from "@/components/course/details/course-details-review-form";
 
 type IProps = {
    course: ICourseDT;
@@ -35,31 +31,11 @@ export default function CourseDetailsArea({ course }: IProps) {
                      </div>
 
                      <div className="tp-course-details-2-content">
-                        <CourseDetailsInfo />
+                        <CourseDetailsInfo course={course} />
 
-                        <div id="curriculum" className="pt-70">
-                           <h4 className="tp-course-details-2-main-title">Course Curriculum</h4>
-                           <CourseDetailsCurriculum />
-                        </div>
-
-                        <div id="instructors" className="pt-100">
-                           <h4 className="tp-course-details-2-main-title">Your Instructors</h4>
-                           <CourseDetailsInstructor />
-                        </div>
-
-                        <div id="reviews">
+                        <div id="reviews" className="pt-70">
                            <h4 className="tp-course-details-2-main-title">Ratings & Reviews</h4>
                            <CourseDetailsRatingReviews />
-                        </div>
-
-                        <h4 className="tp-course-details-2-main-title">Featured review</h4>
-                        <CourseDetailsFeaturedReviews />
-
-
-                        <h4 className="tp-course-details-2-main-title">Write a Review</h4>
-                        <div className="tp-course-details-2-comment-box pr-25">
-                           <span>What is it like to Course?</span>
-                           <CourseDetailsReviewForm />
                         </div>
                      </div>
 

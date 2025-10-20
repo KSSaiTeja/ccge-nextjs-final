@@ -16,7 +16,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Globally recognized accounting qualification by the UK-based ACCA, accepted in 180+ countries. Complete 13 exams across 3 levels: Applied Knowledge (3 papers), Applied Skills (6 papers), and Strategic Professional (4 papers).",
+    duration: "2-3 years",
+    examPattern: "3 hours per exam - Section A: 35 objective questions (70 marks), Section B: 3 case-based questions (30 marks)",
+    fees: "₹17,000",
+    eligibility: "Class 12 with 65% in Accounts/Math/English + 50% in others; graduates may get exemptions",
+    certifications: "Diploma (after Knowledge), Advanced Diploma (after Skills), ACCA Membership (after Professional + 36 months experience)"
   },
   {
     id: 2,
@@ -33,7 +38,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Premier investment management credential by CFA Institute (USA). Complete 3 levels covering Ethics, Quant Methods, Economics, Financial Reporting, Corporate Issuers, Equity/Fixed Income, Derivatives, Alternatives, and Portfolio Management.",
+    duration: "2.5-4 years average",
+    examPattern: "Level I: 180 MCQs (4h30m total), Level II: 88 item-set questions, Level III: Essay + item sets",
+    fees: "₹1,00,000",
+    eligibility: "Bachelor's degree (or final year), or 4,000 hours of work experience",
+    certifications: "CFA Charter (after passing all 3 levels + 4 years relevant work experience)"
   },
   {
     id: 3,
@@ -50,7 +60,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Strategic finance certification by IMA (USA), focused on decision support. Complete 2 parts: Financial Planning, Performance, and Analytics; and Strategic Financial Management.",
+    duration: "6-12 months to complete exams; 3 years max to finish both parts",
+    examPattern: "Each part: 4 hours - 100 MCQs (3 hours) + 2 essay questions (1 hour). Passing score: 360/500",
+    fees: "₹1,25,000",
+    eligibility: "Bachelor's degree in any discipline; work experience required only for certification",
+    certifications: "CMA Certification (after passing both parts + 2 years relevant work experience)"
   },
   {
     id: 4,
@@ -67,7 +82,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Top-tier US accounting credential by AICPA. Complete 4 exam sections: Auditing & Attestation (AUD), Financial Accounting & Reporting (FAR), Regulation (REG), and Business Environment & Concepts (BEC).",
+    duration: "12-18 months average",
+    examPattern: "Each section: 4 hours - Mix of MCQs, task-based simulations (TBS), and written communication",
+    fees: "₹1,25,000",
+    eligibility: "120-150 US credit hours (typically B.Com + M.Com or CA + additional credits)",
+    certifications: "CPA License (after passing all sections + 150 credits + 1-2 years experience)"
   },
   {
     id: 5,
@@ -84,7 +104,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Global risk certification by GARP (USA). Complete 2 parts: Foundations of Risk, Quant Analysis, Financial Markets, Valuation & Risk Models; and Market/Credit/Operational Risk, Risk Management & Investment Management.",
+    duration: "1-2 years",
+    examPattern: "Part I: 100 MCQs (4 hours), Part II: 80 MCQs (4 hours). No negative marking",
+    fees: "₹52,000",
+    eligibility: "None formal; Grade 12 recommended",
+    certifications: "FRM Certification (after passing both parts + 2 years relevant work experience)"
   },
   {
     id: 6,
@@ -101,7 +126,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "CFA Institute ESG Investing Certificate covering ESG analysis, valuation, portfolio integration, and global regulations. Most recognized ESG certification in the finance industry.",
+    duration: "6-8 weeks study",
+    examPattern: "100 MCQs + item sets, 2h20m",
+    fees: "₹56,000",
+    eligibility: "None formal; basic finance knowledge recommended",
+    certifications: "CFA Institute ESG Investing Certificate (after passing exam)"
   },
   {
     id: 7,
@@ -118,7 +148,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Highest US tax credential awarded by IRS. Complete 3 parts: Individuals (Income, Deductions, Credits), Businesses (Entities, Tax Prep, Financial Info), and Representation, Practices & Procedures.",
+    duration: "3-6 months to complete all parts",
+    examPattern: "Each part: 100 MCQs, 3.5 hours (3h exam + 30m break). Computer-based, instant score report",
+    fees: "₹15,000",
+    eligibility: "None; open to all",
+    certifications: "Enrolled Agent (EA) - after passing all 3 parts + PTIN + background check"
   },
   {
     id: 8,
@@ -135,7 +170,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Back/middle-office training in trade lifecycle and settlements. Covers capital markets overview, trade execution, clearing, settlement, reconciliations, corporate actions, operational risk, and compliance.",
+    duration: "4-9 months",
+    examPattern: "Practical assessments and case studies",
+    fees: "₹1,50,000",
+    eligibility: "Basic finance knowledge; Excel proficiency recommended",
+    certifications: "Investment Banking Operations Certificate (after completing all modules and assessments)"
   },
   {
     id: 9,
@@ -152,7 +192,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Front-office training in M&A, valuations, and deal execution. Covers financial accounting & statement analysis, DCF, LBO, Comparable Company Analysis, M&A process, pitch books, due diligence, and capital raising.",
+    duration: "6-12 months",
+    examPattern: "Financial modeling assessments and case studies",
+    fees: "₹5,00,000",
+    eligibility: "Strong finance background; Excel and PowerPoint proficiency required",
+    certifications: "Global Investment Banking Certificate (after completing all modules and assessments)"
   },
   {
     id: 10,
@@ -169,7 +214,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "ACCA-accredited IFRS certification. Covers IFRS standards application (IFRS 3, 9, 15, 16, etc.), group reporting, deferred tax, and financial instruments.",
+    duration: "6-12 months",
+    examPattern: "Single 3h15m written exam - Scenario-based questions, no MCQs. Passing mark: 50%",
+    fees: "₹45,000",
+    eligibility: "CA/CS/CMA Inter or Final, or B.Com + 2 years experience",
+    certifications: "DipIFRS Certificate (after passing exam)"
   },
   {
     id: 11,
@@ -186,7 +236,12 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    author_img: "/assets/img/instructor/instructor-1.png"
+    description: "Comprehensive UK tax and accounting training. Covers income tax, capital gains tax, inheritance tax, corporation tax, VAT, tax planning, compliance, and ethics.",
+    duration: "6-12 months",
+    examPattern: "Written examinations and practical assessments",
+    fees: "₹1,50,000",
+    eligibility: "Accounting background preferred; ACCA students must clear FA/FR first",
+    certifications: "UK Taxation & Accounting Certificate (after completing all modules and assessments)"
   }
 ];
 

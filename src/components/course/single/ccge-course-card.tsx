@@ -3,7 +3,6 @@ import React from "react";
 import Image from "next/image";
 import { ICourseDT } from "@/types/course-d-t";
 import Link from "next/link";
-import CoursePrice from "../course-price";
 
 type IProps = {
   course: ICourseDT;
@@ -15,10 +14,9 @@ export default function CCGECourseCard({ course, onEnrollClick }: IProps) {
     slug,
     thumbnail,
     title,
-    discount,
     avg_rating,
     total_rating,
-    price,
+    fees,
   } = course || {};
 
   return (
@@ -55,7 +53,7 @@ export default function CCGECourseCard({ course, onEnrollClick }: IProps) {
             </div>
           </div>
           <div className="tp-course-pricing home-2">
-            <CoursePrice discount={discount} price={price} />
+            <span style={{fontSize: '14px', fontWeight: '600'}}>{fees}</span>
           </div>
         </div>
       </div>

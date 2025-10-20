@@ -1,9 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { LessonsSvg, UserSvgTwo } from "../../svg";
+import { UserSvgTwo } from "../../svg";
 import { ICourseDT } from "@/types/course-d-t";
 import Link from "next/link";
-import CoursePrice from "../course-price";
 
 type IProps = {
   course: ICourseDT;
@@ -12,34 +11,26 @@ type IProps = {
 
 export default function CourseItem({ course, removeTag }: IProps) {
   const {
-    id,
+    slug,
     thumbnail,
-    author_name,
-    author_img,
     title,
-    discount,
-    lessons,
     students,
     avg_rating,
     total_rating,
     category,
-    price,
+    fees,
   } = course || {};
+  
+  // Generate course page URL based on slug
+  const courseUrl = `/courses/${slug}`;
+  
   return (
     <div className="tp-course-item p-relative fix mb-30">
       <div className="tp-course-teacher mb-15">
-        <span>
-          {author_img && (
-            <Image src={author_img} alt={author_name} width={30} height={30} />
-          )}
-          {author_name}
-        </span>
-        {discount && discount > 0 ? (
-          <span className="discount">-{discount}% </span>
-        ) : null}
+        <span style={{visibility: 'hidden'}}>Placeholder</span>
       </div>
       <div className="tp-course-thumb">
-        <Link href={`/course-details/${id}`}>
+        <Link href={courseUrl}>
           <Image
             className="course-lightblue"
             src={thumbnail}
@@ -55,16 +46,12 @@ export default function CourseItem({ course, removeTag }: IProps) {
         </div>
         <div className="tp-course-meta">
           <span>
-            <span><LessonsSvg /></span>
-            {" "}{lessons} Lessons
-          </span>
-          <span>
             <span><UserSvgTwo /></span>
-            {" "}{students} Student
+            {" "}{students}+ Students
           </span>
         </div>
         <h4 className="tp-course-title">
-          <Link href={`/course-details/${id}`}
+          <Link href={courseUrl}
             dangerouslySetInnerHTML={{ __html: removeTag ? title.replace(/(<([^>]+)>)/gi, "") : title }}
           ></Link>
         </h4>
@@ -83,12 +70,12 @@ export default function CourseItem({ course, removeTag }: IProps) {
             </div>
           </div>
           <div className="tp-course-pricing home-2">
-            <CoursePrice discount={discount} price={price} />
+            <span style={{fontSize: '14px', fontWeight: '600'}}>{fees}</span>
           </div>
         </div>
       </div>
       <div className="tp-course-btn home-2">
-        <Link href={`/course-details/${id}`}>Preview this Course</Link>
+        <Link href={courseUrl}>Preview this Course</Link>
       </div>
     </div>
   );

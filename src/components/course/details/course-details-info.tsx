@@ -1,21 +1,139 @@
 'use client';
 import React from "react";
 import { MinusSvg, PlusThreeSvg } from "@/components/svg";
+import { ICourseDT } from "@/types/course-d-t";
 
+type IProps = {
+  course: ICourseDT;
+};
 
-export default function CourseDetailsInfo() {
+export default function CourseDetailsInfo({ course }: IProps) {
   const [showMore, setShowMore] = React.useState(false);
+  
+  const getLearningPoints = (courseId: number) => {
+    switch(courseId) {
+      case 1: // ACCA
+        return [
+          "Master 13 professional accounting exams across 3 levels",
+          "Applied Knowledge: Business & Technology, Management Accounting, Financial Accounting",
+          "Applied Skills: Corporate Law, Performance Management, Taxation, Financial Reporting",
+          "Strategic Professional: Business Reporting, Business Leader, and elective subjects",
+          "Global recognition in 180+ countries",
+          "Professional development and career advancement opportunities"
+        ];
+      case 2: // CFA
+        return [
+          "Comprehensive investment management knowledge across 3 levels",
+          "Ethics and professional standards in finance",
+          "Quantitative methods and economic analysis",
+          "Financial reporting and corporate finance",
+          "Equity, fixed income, and alternative investments",
+          "Portfolio management and wealth planning"
+        ];
+      case 3: // CMA
+        return [
+          "Strategic financial management and decision support",
+          "Financial planning, performance, and analytics",
+          "Cost management and budgeting techniques",
+          "Internal controls and risk management",
+          "Professional ethics and corporate governance",
+          "Management accounting best practices"
+        ];
+      case 4: // CPA
+        return [
+          "US Generally Accepted Accounting Principles (GAAP)",
+          "Auditing and attestation standards",
+          "Financial accounting and reporting requirements",
+          "Business law and regulation compliance",
+          "Taxation and business environment concepts",
+          "Professional ethics and responsibilities"
+        ];
+      case 5: // FRM
+        return [
+          "Foundations of risk management",
+          "Quantitative analysis and financial markets",
+          "Valuation and risk models",
+          "Market, credit, and operational risk",
+          "Risk management and investment management",
+          "Current issues in risk management"
+        ];
+      case 6: // ESG
+        return [
+          "ESG analysis and integration techniques",
+          "Sustainable investing principles",
+          "Environmental risk assessment",
+          "Social impact measurement",
+          "Governance frameworks and best practices",
+          "Global ESG regulations and standards"
+        ];
+      case 7: // EA
+        return [
+          "US tax law for individuals and businesses",
+          "Tax preparation and planning strategies",
+          "IRS representation and procedures",
+          "Ethics and professional conduct",
+          "Tax compliance and audit defense",
+          "Client relationship management"
+        ];
+      case 8: // Investment Banking Operations
+        return [
+          "Trade lifecycle and settlement processes",
+          "Capital markets operations",
+          "Reconciliation and corporate actions",
+          "Operational risk management",
+          "Compliance and regulatory requirements",
+          "Technology systems and platforms"
+        ];
+      case 9: // Global Investment Banking
+        return [
+          "Financial modeling and valuation techniques",
+          "M&A process and deal execution",
+          "Capital raising strategies",
+          "Due diligence and risk assessment",
+          "Pitch book development and presentation",
+          "Client relationship and business development"
+        ];
+      case 10: // DipIFRS
+        return [
+          "International Financial Reporting Standards (IFRS)",
+          "Group reporting and consolidation",
+          "Financial instruments and derivatives",
+          "Revenue recognition and lease accounting",
+          "Deferred tax and foreign exchange",
+          "IFRS implementation and compliance"
+        ];
+      case 11: // UK Taxation & Accounting
+        return [
+          "UK tax system and legislation",
+          "Income tax and capital gains tax",
+          "Corporation tax and VAT",
+          "Inheritance tax and estate planning",
+          "Tax planning and compliance",
+          "HMRC procedures and regulations"
+        ];
+      default:
+        return [
+          "Professional certification preparation",
+          "Industry-specific knowledge and skills",
+          "Practical application and case studies",
+          "Exam strategies and techniques",
+          "Career advancement opportunities",
+          "Global recognition and credibility"
+        ];
+    }
+  };
+
   return (
     <div id="info">
-      <h4 className="tp-course-details-2-main-title">Asout Course</h4>
+      <h4 className="tp-course-details-2-main-title">About Course</h4>
       <div className="tp-course-details-2-text mb-60">
         <div className={`content ${showMore ? 'show' : ''}`}>
-          <p>This course is aimed at people interested in UI/UX Design. We’ll start from the very <br />
-            beginning and work all the way through, step by step. If you already have some UI/UX <br />
-            Design experience but want to get up to speed using Adobe XD then this course is perfect <br />
-            for you too!</p>
-          <p>First, we will go over the differences between UX and UI Design. We will look at what our <br />
-            brief for this real-world project is, then we will learn about low-fidelity wireframes and how <br /> to make use of existing UI design kits.</p>
+          <p>{course.description}</p>
+          <p><strong>Duration:</strong> {course.duration}</p>
+          <p><strong>Exam Pattern:</strong> {course.examPattern}</p>
+          <p><strong>Fees:</strong> {course.fees}</p>
+          <p><strong>Eligibility:</strong> {course.eligibility}</p>
+          <p><strong>Certifications:</strong> {course.certifications}</p>
         </div>
         <a onClick={() => setShowMore(!showMore)} className="tp-course-details-showmore show-more-button">
           <span className="svg-icon">
@@ -27,16 +145,11 @@ export default function CourseDetailsInfo() {
       <h4 className="tp-course-details-2-main-title">What will you Learn?</h4>
       <div className="tp-course-details-2-list">
         <ul>
-          <li>Become a UX designer.</li>
-          <li>Filming 101</li>
-          <li>Learn to design websites.</li>
-          <li>Tools you need for best results.</li>
-          <li>How to plan for a video idea</li>
-          <li>How to use premade UI kits.</li>
-          <li>Differences between ads, trailers, vlogs,etc</li>
+          {getLearningPoints(course.id).map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
         </ul>
-        <p>With this course, you also have access to a whole lot of resources not only for reference but
-          also free media like aerial video shots, background music, fonts, and more.</p>
+        <p>With CCGE&apos;s expert faculty and comprehensive study materials, you&apos;ll gain the knowledge and skills needed to excel in your professional certification journey and advance your career in finance and accounting.</p>
       </div>
     </div>
   )

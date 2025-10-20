@@ -1,3 +1,4 @@
+'use client';
 import ContactForm from "../form/contact-form";
 
 
@@ -24,15 +25,52 @@ export default function ContactArea() {
           <div className="col-lg-10">
             <div className="tp-contact-wrap p-relative">
               <div className="tp-contact-heading text-center">
-                <h3 className="tp-contact-title">Get in Touch</h3>
-                <p>We are here to answer any question you may have.</p>
+                <h3 className="tp-contact-title">Get in Touch with CCGE</h3>
+                <p>We&apos;re here to answer any questions about our professional finance certification programs.</p>
               </div>
               <div className="tp-contact-from-box">
-                <h3 className="tp-contact-from-title">Send a Message 👍🏻</h3>
+                <h3 className="tp-contact-from-title">Send Us a Message 👍🏻</h3>
+                <p style={{marginBottom: '20px', textAlign: 'center'}}>Fill out the form below or reach us on WhatsApp for instant support!</p>
 
                 {/* form start */}
                 <ContactForm />
                 {/* form end */}
+
+                {/* WhatsApp Button */}
+                <div style={{textAlign: 'center', marginTop: '30px'}}>
+                  <a 
+                    href="https://wa.me/919666660713?text=Hi%20CCGE,%20I%20would%20like%20to%20know%20more%20about%20your%20courses" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      background: '#25D366',
+                      color: 'white',
+                      padding: '15px 30px',
+                      borderRadius: '50px',
+                      fontSize: '18px',
+                      fontWeight: '600',
+                      textDecoration: 'none',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 4px 15px rgba(37, 211, 102, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#128C7E';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 6px 20px rgba(37, 211, 102, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = '#25D366';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(37, 211, 102, 0.3)';
+                    }}
+                  >
+                    <i className="fa-brands fa-whatsapp" style={{fontSize: '24px'}}></i>
+                    Chat with us on WhatsApp
+                  </a>
+                </div>
               </div>
             </div>
           </div>

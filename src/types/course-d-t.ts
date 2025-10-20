@@ -14,4 +14,10 @@ export type ICourseDT = {
     language: string;
     progress?: number;
     slug?: string;
+    description?: string;
+    duration?: string;
+    examPattern?: string;
+    fees?: string;
+    eligibility?: string;
+    certifications?: string;
 }

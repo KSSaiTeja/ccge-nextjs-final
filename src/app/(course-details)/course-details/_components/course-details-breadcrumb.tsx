@@ -1,9 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { HomeSvg } from "@/components/svg";
 import { ICourseDT } from "@/types/course-d-t";
 import { removeTagInText } from "@/utils";
-import author_img from "@/assets/img/course/course-5-teacher-1.png";
 
 type IProps = {
    course: ICourseDT
@@ -25,24 +23,13 @@ export default function CourseDetailsBreadcrumb({ course }: IProps) {
                         <span className="tp-course-details-2-category">{course.category}</span>
                         <h3 className="tp-course-details-2-title">{removeTagInText(course.title)}</h3>
                         <div className="tp-course-details-2-meta-wrapper d-flex align-items-center flex-wrap">
-                           <div className="tp-course-details-2-meta ">
-                              <div className="tp-course-details-2-author d-flex align-items-center">
-                                 <div className="tp-course-details-2-author-avater">
-                                    <Image src={course.author_img ? course.author_img : author_img} alt={course.author_name} width={50} height={50} />
-                                 </div>
-                                 <div className="tp-course-details-2-author-content">
-                                    <span className="tp-course-details-2-author-designation">Instructor</span>
-                                    <h3 className="tp-course-details-2-meta-title"><a href="#">{course.author_name}</a></h3>
-                                 </div>
-                              </div>
-                           </div>
                            <div className="tp-course-details-2-meta">
                               <span className="tp-course-details-2-meta-subtitle">Category</span>
                               <h3 className="tp-course-details-2-meta-title">{course.category}</h3>
                            </div>
                            <div className="tp-course-details-2-meta">
-                              <span className="tp-course-details-2-meta-subtitle">Last updated</span>
-                              <h3 className="tp-course-details-2-meta-title">15 July, 2024</h3>
+                              <span className="tp-course-details-2-meta-subtitle">Students Enrolled</span>
+                              <h3 className="tp-course-details-2-meta-title">{course.students}+</h3>
                            </div>
                            <div className="tp-course-details-2-meta text-end">
                               <div className="tp-course-details-2-meta-rating-wrapper">
