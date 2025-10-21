@@ -3,59 +3,34 @@ import { CloseThreeSvg, SearchSvg, StarThree } from "../svg";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-// CCGE Top Programs Data - 4 Best Courses (Exact CCGE Course Names)
-const ccge_top_programs = [
+// CCGE Live Courses Data - EA and UK Taxation Only
+const ccge_live_courses = [
   {
-    id: 1,
-    title: "ACCA Course",
-    category: "ACCA Course",
-    thumbnail: "/assets/img/ccge-course-thumbnails/acca-course.jpg",
-    link: "/courses/acca",
-    price: 299,
-    rating: 5
+    id: 7,
+    title: "EA Course",
+    category: "US Taxation & Accounting",
+    thumbnail: "/assets/img/ccge-course-thumbnails/ea-course.jpg",
+    link: "/courses/ea",
+    fees: "₹45,000",
+    rating: 5,
+    isLive: true
   },
   {
-    id: 2,
-    title: "CFA Course", 
-    category: "CFA Course",
-    thumbnail: "/assets/img/ccge-course-thumbnails/cfa-course.jpg",
-    link: "/courses/cfa",
-    price: 399,
-    rating: 5
-  },
-  {
-    id: 3,
-    title: "CPA Course",
-    category: "CPA Course",
-    thumbnail: "/assets/img/ccge-course-thumbnails/cpa-course.jpg", 
-    link: "/courses/cpa",
-    price: 379,
-    rating: 5
-  },
-  {
-    id: 4,
-    title: "FRM Course",
-    category: "FRM Course",
-    thumbnail: "/assets/img/ccge-course-thumbnails/frm-course.jpg",
-    link: "/courses/frm", 
-    price: 329,
-    rating: 5
+    id: 11,
+    title: "UK Taxation & Accounting",
+    category: "UK Taxation",
+    thumbnail: "/assets/img/ccge-course-thumbnails/uk-taxation-accounting.jpg",
+    link: "/courses/uk-taxation-accounting",
+    fees: "₹25,000",
+    rating: 5,
+    isLive: true
   }
 ];
 
-// Course data for search (Exact CCGE Course Names)
+// Course data for search - Live Courses Only
 const courseData = [
-  { id: 1, title: "ACCA Course", link: "/courses/acca", category: "ACCA Course" },
-  { id: 2, title: "CFA Course", link: "/courses/cfa", category: "CFA Course" },
-  { id: 3, title: "CMA Course", link: "/courses/cma", category: "CMA Course" },
-  { id: 4, title: "CPA Course", link: "/courses/cpa", category: "CPA Course" },
-  { id: 5, title: "FRM Course", link: "/courses/frm", category: "FRM Course" },
-  { id: 6, title: "ESG Course", link: "/courses/esg", category: "ESG Course" },
-  { id: 7, title: "EA Course", link: "/courses/ea", category: "EA Course" },
-  { id: 8, title: "Investment Banking Operations", link: "/courses/investment-banking-operations", category: "Investment Banking Operations" },
-  { id: 9, title: "Global Investment Banking", link: "/courses/global-investment-banking", category: "Global Investment Banking" },
-  { id: 10, title: "DipIFRS Course", link: "/courses/dipifrs", category: "DipIFRS Course" },
-  { id: 11, title: "UK Taxation & Accounting", link: "/courses/uk-taxation-accounting", category: "UK Taxation & Accounting" },
+  { id: 7, title: "EA Course", link: "/courses/ea", category: "US Taxation & Accounting", isLive: true },
+  { id: 11, title: "UK Taxation & Accounting", link: "/courses/uk-taxation-accounting", category: "UK Taxation", isLive: true },
 ];
 
 type IProps = {
@@ -132,15 +107,44 @@ export default function SearchPopup({ isSearchOpen, onHide }: IProps) {
                               )}
 
                               <div className="tp-search-course-wrap">
-                                 <h3 className="tp-search-course-title">OUR TOP PROGRAMS</h3>
+                                 <h3 className="tp-search-course-title">🎥 LIVE COURSES</h3>
                                  <div className="row">
-                                    {ccge_top_programs.map((item) => (
-                                       <div key={item.id} className="col-xl-3 col-lg-4 col-sm-6">
+                                    {ccge_live_courses.map((item) => (
+                                       <div key={item.id} className="col-xl-6 col-lg-6 col-sm-6">
                                           <div className="tp-search-course-item mb-30">
-                                             <div className="tp-search-course-thumb mb-5">
+                                             <div className="tp-search-course-thumb mb-5" style={{ position: 'relative' }}>
                                                 <Link href={item.link} onClick={onHide}>
-                                                   <Image src={item.thumbnail} alt={item.title} width={186} height={104} />
+                                                   <Image src={item.thumbnail} alt={item.title} width={280} height={157} />
                                                 </Link>
+                                                {/* Live Badge */}
+                                                <div style={{
+                                                   position: 'absolute',
+                                                   top: '10px',
+                                                   right: '10px',
+                                                   background: 'linear-gradient(135deg, #FF3B3B 0%, #FF6B6B 100%)',
+                                                   color: '#FFFFFF',
+                                                   padding: '6px 12px',
+                                                   borderRadius: '20px',
+                                                   fontSize: '11px',
+                                                   fontWeight: '700',
+                                                   textTransform: 'uppercase',
+                                                   letterSpacing: '0.5px',
+                                                   boxShadow: '0 4px 15px rgba(255, 59, 59, 0.4)',
+                                                   display: 'flex',
+                                                   alignItems: 'center',
+                                                   gap: '5px',
+                                                   animation: 'pulse 2s infinite'
+                                                }}>
+                                                   <span style={{
+                                                      width: '6px',
+                                                      height: '6px',
+                                                      background: '#FFFFFF',
+                                                      borderRadius: '50%',
+                                                      display: 'inline-block',
+                                                      animation: 'blink 1.5s infinite'
+                                                   }}></span>
+                                                   Live
+                                                </div>
                                              </div>
                                              <div className="tp-search-course-content">
                                                 <div className="tp-search-course-star">
@@ -152,11 +156,11 @@ export default function SearchPopup({ isSearchOpen, onHide }: IProps) {
                                                 </div>
                                                 <h4 className="tp-search-course-item-title">
                                                    <Link href={item.link} onClick={onHide}>
-                                                     {item.category}
+                                                     {item.title}
                                                    </Link>
                                                 </h4>
                                                 <div className="tp-search-course-price">
-                                                   <span>${item.price}</span>
+                                                   <span>{item.fees}</span>
                                                 </div>
                                              </div>
                                           </div>

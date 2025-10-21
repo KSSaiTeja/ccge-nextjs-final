@@ -1,7 +1,29 @@
 {
-  "name": "acadia-next-js",
-  "version": "0.1.0",
+  "name": "ccge-corporate-commerce",
+  "version": "1.0.0",
   "private": true,
+  "description": "CCGE - Center for Corporate Governance & Excellence | Professional Finance & Accounting Certification Platform",
+  "author": {
+    "name": "CCGE Development Team",
+    "email": "info@ccge.in",
+    "url": "https://ccge.in"
+  },
+  "keywords": [
+    "CCGE",
+    "Corporate Commerce",
+    "Professional Courses",
+    "ACCA",
+    "CFA",
+    "CMA",
+    "CPA",
+    "EA",
+    "UK Taxation",
+    "Education Platform"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "private"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

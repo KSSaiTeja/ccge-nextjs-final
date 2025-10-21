@@ -25,6 +25,7 @@ export default function CourseDetailsRightSide({ course }: IProps) {
    const [isEnrollmentOpen, setIsEnrollmentOpen] = useState(false);
    const [isPaymentEnrollmentOpen, setIsPaymentEnrollmentOpen] = useState(false);
    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+   const [isConstructionModalOpen, setIsConstructionModalOpen] = useState(false);
    const [paymentDetails, setPaymentDetails] = useState({
       paymentId: '',
       enrollmentId: '',
@@ -140,66 +141,35 @@ export default function CourseDetailsRightSide({ course }: IProps) {
             )}
             
             <div className="tp-course-details-2-widget-btn">
-               {isLiveCourse ? (
-                  <a 
-                     onClick={handleBuyNow}
-                     className="ccge-btn-primary" 
-                     style={{
-                        cursor: 'pointer',
-                        display: 'block',
-                        fontSize: '17px',
-                        fontWeight: '500',
-                        borderRadius: '6px',
-                        padding: '11px 15px',
-                        textAlign: 'center',
-                        color: '#ffffff',
-                        border: 'none',
-                        background: 'var(--brand-blue-600)',
-                        boxShadow: 'inset 0 1px 4px 0 rgba(48, 54, 81, 0.06), 0 1px 1px 0 rgba(48, 54, 81, 0.06)',
-                        marginBottom: '10px',
-                        transition: 'all 0.3s ease'
-                     }}
-                     onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--brand-blue-700)';
-                        e.currentTarget.style.color = '#ffffff';
-                     }}
-                     onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'var(--brand-blue-600)';
-                        e.currentTarget.style.color = '#ffffff';
-                     }}
-                  >
-                     {isLoaded ? 'Buy Now - Pay with Razorpay' : 'Buy Now'}
-                  </a>
-               ) : (
-                  <a 
-                     className="ccge-btn-primary" 
-                     style={{
-                        cursor: 'default',
-                        display: 'block',
-                        fontSize: '17px',
-                        fontWeight: '500',
-                        borderRadius: '6px',
-                        padding: '11px 15px',
-                        textAlign: 'center',
-                        color: '#ffffff',
-                        border: 'none',
-                        background: 'var(--brand-blue-600)',
-                        boxShadow: 'inset 0 1px 4px 0 rgba(48, 54, 81, 0.06), 0 1px 1px 0 rgba(48, 54, 81, 0.06)',
-                        marginBottom: '10px',
-                        transition: 'all 0.3s ease'
-                     }}
-                     onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'var(--brand-blue-700)';
-                        e.currentTarget.style.color = '#ffffff';
-                     }}
-                     onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'var(--brand-blue-600)';
-                        e.currentTarget.style.color = '#ffffff';
-                     }}
-                  >
-                     Buy Now
-                  </a>
-               )}
+               <a 
+                  onClick={isLiveCourse ? handleBuyNow : () => setIsConstructionModalOpen(true)}
+                  className="ccge-btn-primary" 
+                  style={{
+                     cursor: 'pointer',
+                     display: 'block',
+                     fontSize: '17px',
+                     fontWeight: '500',
+                     borderRadius: '6px',
+                     padding: '11px 15px',
+                     textAlign: 'center',
+                     color: '#ffffff',
+                     border: 'none',
+                     background: 'var(--brand-blue-600)',
+                     boxShadow: 'inset 0 1px 4px 0 rgba(48, 54, 81, 0.06), 0 1px 1px 0 rgba(48, 54, 81, 0.06)',
+                     marginBottom: '10px',
+                     transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                     e.currentTarget.style.background = 'var(--brand-blue-700)';
+                     e.currentTarget.style.color = '#ffffff';
+                  }}
+                  onMouseLeave={(e) => {
+                     e.currentTarget.style.background = 'var(--brand-blue-600)';
+                     e.currentTarget.style.color = '#ffffff';
+                  }}
+               >
+                  Register and Pay
+               </a>
                <a 
                   onClick={() => setIsEnrollmentOpen(true)} 
                   style={{
@@ -239,7 +209,7 @@ export default function CourseDetailsRightSide({ course }: IProps) {
 
                   <div className="tp-course-details-2-widget-list-item d-flex align-items-center justify-content-between">
                      <span> <DurationSvg /> Duration</span>
-                     <span>{course.duration}</span>
+                     <span>{(id === 11) ? 'Less than a month' : course.duration}</span>
                   </div>
                   <div className="tp-course-details-2-widget-list-item d-flex align-items-center justify-content-between">
                      <span> <LanguageSvg /> Language</span>
@@ -274,6 +244,170 @@ export default function CourseDetailsRightSide({ course }: IProps) {
          amount={paymentDetails.amount}
          courseName={paymentDetails.courseName}
       />
+      
+      {/* Under Construction Modal for non-live courses */}
+      {isConstructionModalOpen && (
+         <div 
+            className="modal-overlay" 
+            style={{
+               position: 'fixed',
+               top: 0,
+               left: 0,
+               right: 0,
+               bottom: 0,
+               background: 'rgba(0, 0, 0, 0.75)',
+               display: 'flex',
+               alignItems: 'center',
+               justifyContent: 'center',
+               zIndex: 9999,
+               padding: '20px'
+            }}
+            onClick={(e) => e.target === e.currentTarget && setIsConstructionModalOpen(false)}
+         >
+            <div 
+               style={{
+                  background: 'white',
+                  borderRadius: '20px',
+                  maxWidth: '500px',
+                  width: '100%',
+                  padding: '40px',
+                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                  position: 'relative',
+                  textAlign: 'center'
+               }}
+            >
+               <button
+                  onClick={() => setIsConstructionModalOpen(false)}
+                  style={{
+                     position: 'absolute',
+                     top: '15px',
+                     right: '15px',
+                     background: 'none',
+                     border: 'none',
+                     fontSize: '28px',
+                     cursor: 'pointer',
+                     color: '#6c757d',
+                     lineHeight: 1,
+                     padding: '5px 10px'
+                  }}
+               >
+                  ×
+               </button>
+
+               {/* Icon */}
+               <div style={{
+                  width: '80px',
+                  height: '80px',
+                  margin: '0 auto 25px',
+                  background: 'linear-gradient(135deg, #FFC221 0%, #FFD96B 100%)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '40px'
+               }}>
+                  🚧
+               </div>
+
+               {/* Title */}
+               <h3 style={{
+                  fontSize: '26px',
+                  fontWeight: '700',
+                  color: 'var(--tp-heading-2)',
+                  marginBottom: '15px'
+               }}>
+                  Course Registration Coming Soon
+               </h3>
+
+               {/* Message */}
+               <p style={{
+                  fontSize: '16px',
+                  color: '#6c757d',
+                  lineHeight: '1.6',
+                  marginBottom: '25px'
+               }}>
+                  We're setting up the payment system for <strong>{title}</strong>. Our team is working hard to bring you a seamless enrollment experience.
+               </p>
+
+               {/* Info Box */}
+               <div style={{
+                  background: '#f8f9fa',
+                  padding: '20px',
+                  borderRadius: '12px',
+                  marginBottom: '25px',
+                  textAlign: 'left'
+               }}>
+                  <h5 style={{
+                     fontSize: '14px',
+                     fontWeight: '600',
+                     color: 'var(--tp-heading-2)',
+                     marginBottom: '12px'
+                  }}>
+                     📞 Want to Enroll Now?
+                  </h5>
+                  <p style={{
+                     fontSize: '14px',
+                     color: '#6c757d',
+                     marginBottom: '10px'
+                  }}>
+                     Contact our team directly:
+                  </p>
+                  <div style={{ fontSize: '14px', color: 'var(--brand-blue-600)', fontWeight: '600' }}>
+                     📧 info@ccge.in<br/>
+                     📱 +91 96666 60713 / 14
+                  </div>
+               </div>
+
+               {/* Action Buttons */}
+               <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
+                  <button
+                     onClick={() => {
+                        setIsConstructionModalOpen(false);
+                        setIsEnrollmentOpen(true);
+                     }}
+                     style={{
+                        padding: '12px 25px',
+                        background: 'var(--brand-blue-600)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        fontSize: '15px',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        color: 'white',
+                        boxShadow: '0 4px 12px rgba(47, 118, 183, 0.3)',
+                        transition: 'all 0.3s ease'
+                     }}
+                     onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'var(--brand-blue-700)';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                     }}
+                     onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'var(--brand-blue-600)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                     }}
+                  >
+                     Enquire Now
+                  </button>
+                  <button
+                     onClick={() => setIsConstructionModalOpen(false)}
+                     style={{
+                        padding: '12px 25px',
+                        background: 'white',
+                        border: '2px solid #dee2e6',
+                        borderRadius: '8px',
+                        fontSize: '15px',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        color: '#6c757d',
+                        transition: 'all 0.3s ease'
+                     }}
+                  >
+                     Close
+                  </button>
+               </div>
+            </div>
+         </div>
+      )}
       </>
    )
 }

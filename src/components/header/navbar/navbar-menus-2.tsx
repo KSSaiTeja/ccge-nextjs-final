@@ -81,7 +81,35 @@ export default function NavbarMenusTwo() {
                 <ul className="tp-submenu">
                   {menu.dropdown_menus.map((dm) => (
                     <li key={dm.id}>
-                      <Link href={dm.link}>{dm.title}</Link>
+                      <Link href={dm.link} style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                        {dm.title}
+                        {dm.isLive && (
+                          <span style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            background: 'linear-gradient(135deg, #FF3B3B 0%, #FF6B6B 100%)',
+                            color: '#FFFFFF',
+                            padding: '3px 10px',
+                            borderRadius: '15px',
+                            fontSize: '11px',
+                            fontWeight: '700',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px',
+                            animation: 'slideInFade 0.5s ease-out'
+                          }}>
+                            <span style={{
+                              width: '6px',
+                              height: '6px',
+                              background: '#FFFFFF',
+                              borderRadius: '50%',
+                              display: 'inline-block',
+                              animation: 'blink 1.5s infinite'
+                            }}></span>
+                            Live
+                          </span>
+                        )}
+                      </Link>
                     </li>
                   ))}
                 </ul>

@@ -33,7 +33,15 @@ export default function HeaderTwo({ inner = false, transparent }: IProps) {
                 <div className="tp-header-2-right d-flex align-items-center">
                   <div className="tp-header-inner-logo tp-header-logo">
                     <Link href="/">
-                      <Image src={logo} alt="logo" priority style={{ height: 'auto', width: '250px' }} />
+                      <Image 
+                        src={logo} 
+                        alt="logo" 
+                        priority 
+                        style={{ 
+                          height: 'auto'
+                        }} 
+                        className="logo-responsive"
+                      />
                     </Link>
                   </div>
                 </div>
@@ -44,16 +52,29 @@ export default function HeaderTwo({ inner = false, transparent }: IProps) {
                 </div>
               </div>
               <div className="col-xxl-3 col-xl-2 col-lg-6 col-6">
-                <div className="tp-header-2-contact d-flex align-items-center justify-content-end">
+                <div className="tp-header-2-contact d-flex align-items-center justify-content-end" style={{ gap: '6px' }}>
                   <div className="tp-header-inner-search">
                     <SearchButton/>
                   </div>
-                  <div className={`tp-header-inner-btn ${inner ? '' : 'home-2'} d-none d-xxl-block`}>
-                    <button className="tp-btn-inner" onClick={handleEnrollClick}>
-                      Enroll Now
+                  <div className={`tp-header-inner-btn ${inner ? '' : 'home-2'}`} style={{ 
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}>
+                    <button 
+                      className="tp-btn-inner" 
+                      onClick={handleEnrollClick}
+                      style={{
+                        whiteSpace: 'nowrap',
+                        fontSize: '13px',
+                        padding: '10px 16px'
+                      }}
+                    >
+                      <span className="d-none d-lg-inline">Enroll Now</span>
+                      <span className="d-lg-none d-md-inline" style={{ fontSize: '12px' }}>Enroll</span>
+                      <span className="d-md-none" style={{ fontSize: '11px', padding: '0' }}>📝</span>
                     </button>
                   </div>
-                  <div className="offcanvas-btn d-xxl-none ml-30">
+                  <div className="offcanvas-btn d-xl-none" style={{ marginLeft: '2px' }}>
                     <OffcanvasButton offcanvas_cls="offcanvas__2" offcanvas_menu_2={true}/>
                   </div>
                 </div>

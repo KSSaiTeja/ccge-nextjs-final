@@ -161,25 +161,31 @@ export const menu_data_2: IMenuDT2[] = [
   },
   {
     id: 2,
-    title: "About",
+    title: "About Us",
     link: "/about",
-    dropdown_menus: [
-      { id: 1, title: "Founders", link: "/about/founders" },
-      { id: 2, title: "Gallery", link: "/about/gallery" },
-    ],
+    // dropdown_menus: [
+    //   { id: 1, title: "Founders", link: "/about/founders" },
+    //   { id: 2, title: "Gallery", link: "/about/gallery" },
+    // ],
   },
   {
     id: 3,
     title: "Courses",
     link: "/courses",
     dropdown_menus: [
+      { id: 7, title: "EA Course", link: "/courses/ea", isLive: true },
+      {
+        id: 11,
+        title: "UK Taxation & Accounting",
+        link: "/courses/uk-taxation-accounting",
+        isLive: true
+      },
       { id: 1, title: "ACCA Course", link: "/courses/acca" },
       { id: 2, title: "CFA Course", link: "/courses/cfa" },
       { id: 3, title: "CMA Course", link: "/courses/cma" },
       { id: 4, title: "CPA Course", link: "/courses/cpa" },
       { id: 5, title: "FRM Course", link: "/courses/frm" },
       { id: 6, title: "ESG Course", link: "/courses/esg" },
-      { id: 7, title: "EA Course", link: "/courses/ea" },
       {
         id: 8,
         title: "Investment Banking Operations",
@@ -191,11 +197,6 @@ export const menu_data_2: IMenuDT2[] = [
         link: "/courses/global-investment-banking",
       },
       { id: 10, title: "DipIFRS Course", link: "/courses/dipifrs" },
-      {
-        id: 11,
-        title: "UK Taxation & Accounting",
-        link: "/courses/uk-taxation-accounting",
-      },
     ],
   },
   {

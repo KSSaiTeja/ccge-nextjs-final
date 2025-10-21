@@ -18,13 +18,18 @@ export default function CCGECourseArea() {
     setIsEnrollmentOpen(true);
   };
 
-  // Get top 6 courses for "All Courses"
-  const top6Courses = ccge_courses.slice(0, 6);
-  
-  // Get only EA and UK Taxation for "Live Now"
+  // Get live courses (EA and UK Taxation)
   const liveCourses = ccge_courses.filter(course => 
     course.id === 7 || course.id === 11 // EA and UK Taxation
   );
+
+  // Get remaining courses
+  const otherCourses = ccge_courses.filter(course => 
+    course.id !== 7 && course.id !== 11
+  );
+
+  // For "All Courses" tab - display live courses first, then top 4 others
+  const top6Courses = [...liveCourses, ...otherCourses.slice(0, 4)];
 
   const displayCourses = activeTab === "Live Now" ? liveCourses : top6Courses;
 

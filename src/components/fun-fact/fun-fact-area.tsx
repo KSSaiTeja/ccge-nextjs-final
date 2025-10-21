@@ -7,7 +7,7 @@ import icon_4 from "@/assets/img/icon/funfact/funfact-2-icon-4.svg";
 const funFacts = [
   {
     id: 1,
-    title: "10,000+ Students",
+    title: "100+ Students",
     description: "Trained globally",
     icon: icon_1,
   },

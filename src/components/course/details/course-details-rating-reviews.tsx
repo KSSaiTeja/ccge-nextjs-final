@@ -1,11 +1,11 @@
 import { StarTwo } from "@/components/svg";
 
 const ratingData = [
-    { stars: "5 star", percentage: 82, width: "82%" },
-    { stars: "4 star", percentage: 30, width: "30%" },
-    { stars: "3 star", percentage: 15, width: "15%" },
-    { stars: "2 star", percentage: 6, width: "6%" },
-    { stars: "1 star", percentage: 10, width: "10%" },
+    { stars: "5 star", percentage: 68, width: "68%" },
+    { stars: "4 star", percentage: 22, width: "22%" },
+    { stars: "3 star", percentage: 7, width: "7%" },
+    { stars: "2 star", percentage: 2, width: "2%" },
+    { stars: "1 star", percentage: 1, width: "1%" },
 ];
 
 export default function CourseDetailsRatingReviews() {

@@ -20,6 +20,7 @@ export type IDropdownMenus = {
   title: string;
   link: string;
   new?: boolean;
+  isLive?: boolean;
 };
 
 export type IMenu = {

@@ -17,6 +17,7 @@ export default function CCGECourseCard({ course, onEnrollClick }: IProps) {
     avg_rating,
     total_rating,
     fees,
+    isLiveCourse,
   } = course || {};
 
   return (
@@ -31,6 +32,38 @@ export default function CCGECourseCard({ course, onEnrollClick }: IProps) {
             height={200}
           />
         </Link>
+        {/* Live Badge */}
+        {isLiveCourse && (
+          <div style={{
+            position: 'absolute',
+            top: '15px',
+            right: '15px',
+            background: 'linear-gradient(135deg, #FF3B3B 0%, #FF6B6B 100%)',
+            color: '#FFFFFF',
+            padding: '8px 16px',
+            borderRadius: '25px',
+            fontSize: '13px',
+            fontWeight: '700',
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px',
+            boxShadow: '0 4px 15px rgba(255, 59, 59, 0.4)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            zIndex: 10,
+            animation: 'pulse 2s infinite'
+          }}>
+            <span style={{
+              width: '8px',
+              height: '8px',
+              background: '#FFFFFF',
+              borderRadius: '50%',
+              display: 'inline-block',
+              animation: 'blink 1.5s infinite'
+            }}></span>
+            Live
+          </div>
+        )}
       </div>
       <div className="tp-course-content">
         <h4 className="tp-course-title">
@@ -60,9 +93,11 @@ export default function CCGECourseCard({ course, onEnrollClick }: IProps) {
       
       {/* Hover Buttons */}
       <div className="tp-course-btn-group ccge-hover-buttons">
-        <button className="tp-course-btn-primary" onClick={onEnrollClick}>
-          Buy Now
-        </button>
+        <Link href={`/courses/${slug}`}>
+          <button className="tp-course-btn-primary">
+            Buy Now
+          </button>
+        </Link>
         <button className="tp-course-btn-secondary" onClick={onEnrollClick}>
           Enquire Now
         </button>

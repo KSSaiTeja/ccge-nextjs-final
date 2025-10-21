@@ -15,7 +15,7 @@ export default function TeamArea() {
               <h3 className="tp-section-3-title">
                 Meet Our{' '}
                 <span>
-                  Teachers
+                  Founders
                   <Image
                     className="tp-underline-shape-9 wow bounceIn"
                     data-wow-duration="1.5s"
