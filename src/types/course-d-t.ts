@@ -20,4 +20,11 @@ export type ICourseDT = {
     fees?: string;
     eligibility?: string;
     certifications?: string;
+    isLiveCourse?: boolean;
+    installmentOptions?: {
+        months: number;
+        amount: number;
+        label?: string;
+        discount?: number;
+    }[];
 }

@@ -107,9 +107,11 @@ export default function HeroCourseCarousel({ onEnrollClick }: IProps) {
         
         {/* Hover Buttons */}
         <div className="tp-course-btn-group home-2">
-          <button className="tp-course-btn-primary" onClick={onEnrollClick}>
-            Buy Now
-          </button>
+          <Link href={currentCourse.link}>
+            <button className="tp-course-btn-primary">
+              Buy Now
+            </button>
+          </Link>
           <button className="tp-course-btn-secondary" onClick={onEnrollClick}>
             Enquire Now
           </button>

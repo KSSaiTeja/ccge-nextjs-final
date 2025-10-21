@@ -138,8 +138,8 @@ export const ccge_courses: ICourseDT[] = [
     title: "EA Course",
     slug: "ea",
     thumbnail: "/assets/img/ccge-course-thumbnails/ea-course.jpg",
-    category: "US Taxation",
-    price: 349,
+    category: "US Taxation & Accounting",
+    price: 45000,
     avg_rating: 5,
     discount: 0,
     lessons: 44,
@@ -148,12 +148,17 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    description: "Highest US tax credential awarded by IRS. Complete 3 parts: Individuals (Income, Deductions, Credits), Businesses (Entities, Tax Prep, Financial Info), and Representation, Practices & Procedures.",
+    description: "Highest US tax credential awarded by IRS. Complete 3 parts: Individuals (Income, Deductions, Credits), Businesses (Entities, Tax Prep, Financial Info), and Representation, Practices & Procedures. Live interactive sessions with expert faculty.",
     duration: "3-6 months to complete all parts",
     examPattern: "Each part: 100 MCQs, 3.5 hours (3h exam + 30m break). Computer-based, instant score report",
-    fees: "₹15,000",
+    fees: "₹45,000",
     eligibility: "None; open to all",
-    certifications: "Enrolled Agent (EA) - after passing all 3 parts + PTIN + background check"
+    certifications: "Enrolled Agent (EA) - after passing all 3 parts + PTIN + background check",
+    isLiveCourse: true,
+    installmentOptions: [
+      { months: 1, amount: 40000, label: "Pay Full Amount (One Time)", discount: 5000 },
+      { months: 2, amount: 25000, label: "2 Installments (First Installment Now)" }
+    ]
   },
   {
     id: 8,
@@ -227,7 +232,7 @@ export const ccge_courses: ICourseDT[] = [
     slug: "uk-taxation-accounting",
     thumbnail: "/assets/img/ccge-course-thumbnails/uk-taxation-accounting.jpg",
     category: "UK Taxation",
-    price: 329,
+    price: 25000,
     avg_rating: 5,
     discount: 0,
     lessons: 46,
@@ -236,12 +241,17 @@ export const ccge_courses: ICourseDT[] = [
     language: "English",
     progress: 0,
     author_name: "CCGE Faculty",
-    description: "Comprehensive UK tax and accounting training. Covers income tax, capital gains tax, inheritance tax, corporation tax, VAT, tax planning, compliance, and ethics.",
+    description: "Comprehensive UK tax and accounting training. Covers income tax, capital gains tax, inheritance tax, corporation tax, VAT, tax planning, compliance, and ethics. Live interactive sessions with experienced UK tax professionals.",
     duration: "6-12 months",
     examPattern: "Written examinations and practical assessments",
-    fees: "₹1,50,000",
+    fees: "₹25,000",
     eligibility: "Accounting background preferred; ACCA students must clear FA/FR first",
-    certifications: "UK Taxation & Accounting Certificate (after completing all modules and assessments)"
+    certifications: "UK Taxation & Accounting Certificate (after completing all modules and assessments)",
+    isLiveCourse: true,
+    installmentOptions: [
+      { months: 1, amount: 20000, label: "Pay Full Amount (One Time)", discount: 5000 },
+      { months: 2, amount: 15000, label: "2 Installments (First Installment Now)" }
+    ]
   }
 ];
 

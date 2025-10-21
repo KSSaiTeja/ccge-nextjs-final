@@ -91,6 +91,15 @@ export default function FooterTwo() {
                      <div className="col-lg-6 col-md-5">
                         <div className="tp-footer-copyright text-start text-md-center">
                            <span>© {new Date().getFullYear()} <a href="#">Corporate Commerce Global Education</a>. All rights reserved.</span>
+                           <div style={{ marginTop: '8px', fontSize: '13px' }}>
+                              <Link href="/privacy-policy" style={{ color: '#6c757d', textDecoration: 'none', marginRight: '15px' }}>
+                                 Privacy Policy
+                              </Link>
+                              <span style={{ color: '#dee2e6', marginRight: '15px' }}>|</span>
+                              <Link href="/terms" style={{ color: '#6c757d', textDecoration: 'none' }}>
+                                 Terms & Conditions
+                              </Link>
+                           </div>
                         </div>
                      </div>
                      <div className="col-lg-3 col-md-3">
