@@ -113,6 +113,11 @@ export async function POST(request: NextRequest) {
 
     const paymentDate = new Date().toISOString();
 
+    // Determine if payment was successful or failed
+    const isPaymentSuccessful = razorpayPaymentId !== "FAILED";
+    const paymentStatus = isPaymentSuccessful ? "✅ Paid" : "❌ Payment Failed";
+    const paymentMethod = isPaymentSuccessful ? "Razorpay" : "Failed";
+
     // Update payment status columns (P, Q, R, S)
     await sheets.spreadsheets.values.update({
       spreadsheetId: sheetId,
@@ -121,10 +126,10 @@ export async function POST(request: NextRequest) {
       requestBody: {
         values: [
           [
-            "✅ Paid", // P: Payment Status
-            razorpayPaymentId, // Q: Razorpay Payment ID
+            paymentStatus, // P: Payment Status (✅ Paid or ❌ Payment Failed)
+            razorpayPaymentId, // Q: Razorpay Payment ID (or "FAILED")
             paymentDate, // R: Payment Date
-            "Razorpay", // S: Payment Method
+            paymentMethod, // S: Payment Method (Razorpay or Failed)
           ],
         ],
       },
