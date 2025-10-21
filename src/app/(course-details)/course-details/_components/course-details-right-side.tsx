@@ -35,7 +35,7 @@ export default function CourseDetailsRightSide({ course }: IProps) {
    const [selectedPaymentOption, setSelectedPaymentOption] = useState<PaymentOption | null>(
       installmentOptions?.[0] || null
    );
-   const { initiatePayment, isLoaded } = useRazorpay();
+   const { initiatePayment } = useRazorpay();
 
    const handleBuyNow = () => {
       if (isLiveCourse && selectedPaymentOption) {
@@ -326,7 +326,7 @@ export default function CourseDetailsRightSide({ course }: IProps) {
                   lineHeight: '1.6',
                   marginBottom: '25px'
                }}>
-                  We're setting up the payment system for <strong>{title}</strong>. Our team is working hard to bring you a seamless enrollment experience.
+                  We&apos;re setting up the payment system for <strong>{title}</strong>. Our team is working hard to bring you a seamless enrollment experience.
                </p>
 
                {/* Info Box */}
