@@ -45,6 +45,10 @@ const verifyPaymentSignature = (
   return generatedSignature === signature;
 };
 
+/**
+ * Idempotent Payment Status Update API
+ * Prevents duplicate updates and handles retry scenarios
+ */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -64,14 +68,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify payment signature (security check)
-    if (razorpayOrderId && razorpaySignature) {
+    // If payment ID is "FAILED", skip signature verification
+    if (razorpayPaymentId !== "FAILED" && razorpayOrderId && razorpaySignature) {
       const isValid = verifyPaymentSignature(
         razorpayOrderId,
         razorpayPaymentId,
         razorpaySignature,
       );
       if (!isValid) {
+        console.error("Signature verification failed for enrollment:", enrollmentId);
         return NextResponse.json(
           { error: "Invalid payment signature" },
           { status: 400 },
@@ -111,6 +116,51 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Extract student information from the row with proper validation
+    const studentData = rows[rowIndex - 1];
+    const studentName = studentData[2]?.trim() || "Student"; // Column C: Full Name
+    const studentEmail = studentData[3]?.trim() || ""; // Column D: Email
+    const courseName = studentData[10]?.trim() || "Course"; // Column K: Course Name
+    const amountPaid = studentData[13]?.trim() || "₹0"; // Column N: Amount Paid
+
+    // Validate critical fields
+    if (!studentEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(studentEmail)) {
+      console.error("Invalid email address in enrollment:", {
+        enrollmentId,
+        email: studentEmail,
+      });
+    }
+
+    // IDEMPOTENCY CHECK: Check current payment status
+    const currentStatus = rows[rowIndex - 1][15]; // Column P (0-indexed: 15)
+    const currentPaymentId = rows[rowIndex - 1][16]; // Column Q (0-indexed: 16)
+
+    // If payment is already successful with the same payment ID, skip update
+    if (currentStatus === "✅ Paid" && currentPaymentId === razorpayPaymentId) {
+      console.log("Payment already recorded - skipping duplicate update:", {
+        enrollmentId,
+        paymentId: razorpayPaymentId,
+      });
+      return NextResponse.json({
+        success: true,
+        message: "Payment already recorded",
+        alreadyProcessed: true,
+      });
+    }
+
+    // Prevent downgrading from successful to failed
+    if (currentStatus === "✅ Paid" && razorpayPaymentId === "FAILED") {
+      console.warn("Attempted to downgrade successful payment to failed:", {
+        enrollmentId,
+        currentPaymentId,
+      });
+      return NextResponse.json({
+        success: true,
+        message: "Payment already successful - cannot change to failed",
+        alreadyProcessed: true,
+      });
+    }
+
     const paymentDate = new Date().toISOString();
 
     // Determine if payment was successful or failed
@@ -134,6 +184,80 @@ export async function POST(request: NextRequest) {
         ],
       },
     });
+
+    console.log("Payment status updated successfully:", {
+      enrollmentId,
+      status: paymentStatus,
+      paymentId: razorpayPaymentId,
+      timestamp: paymentDate,
+    });
+
+    // Send email notification (non-blocking with proper error handling)
+    if (studentEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(studentEmail)) {
+      // Send email in background without blocking the response
+      setImmediate(async () => {
+        try {
+          const { Resend } = await import("resend");
+          const resend = new Resend(process.env.RESEND_API_KEY);
+
+          const emailData = {
+            studentName,
+            email: studentEmail,
+            courseName,
+            amount: amountPaid,
+            paymentId: isPaymentSuccessful ? razorpayPaymentId : undefined,
+            enrollmentId,
+            paymentDate,
+            paymentMethod,
+            failureReason: !isPaymentSuccessful ? "Payment was declined or failed" : undefined,
+            batchStartDate: "November 3rd, 2025",
+            type: isPaymentSuccessful ? ("success" as const) : ("failure" as const),
+          };
+
+          console.log("Sending email notification:", {
+            enrollmentId,
+            email: studentEmail,
+            type: emailData.type,
+          });
+
+          const subject = emailData.type === "success" 
+            ? `🎉 Payment Successful - Welcome to ${emailData.courseName}!`
+            : `⚠️ Payment Failed - Action Required for ${emailData.courseName}`;
+
+          // Generate HTML email (you can import this function)
+          const { generatePaymentSuccessEmail, generatePaymentFailedEmail } = await import("../../send-email/route");
+          const html = emailData.type === "success" 
+            ? generatePaymentSuccessEmail(emailData)
+            : generatePaymentFailedEmail(emailData);
+
+                     const result = await resend.emails.send({
+             from: "CCGE <info@ccge.in>",
+             to: studentEmail,
+             subject: subject,
+             html: html,
+           });
+
+           const emailId = result.data?.id || "unknown";
+
+           console.log("Email sent successfully:", {
+             enrollmentId,
+             emailId: emailId,
+             recipient: studentEmail,
+           });
+
+        } catch (emailError) {
+          console.error("Error sending email (non-critical):", {
+            enrollmentId,
+            error: emailError instanceof Error ? emailError.message : String(emailError),
+          });
+        }
+      });
+    } else {
+      console.warn("Skipping email notification - invalid email address:", {
+        enrollmentId,
+        email: studentEmail,
+      });
+    }
 
     return NextResponse.json({
       success: true,

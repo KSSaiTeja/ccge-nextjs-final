@@ -14,9 +14,10 @@ STEP 1: CREATE .env.local FILE
 2. The file should be in the same location as package.json
 
 ================================================================================
-STEP 2: GET YOUR RAZORPAY TEST KEYS (RECOMMENDED FOR NOW)
+STEP 2: GET YOUR API KEYS
 ================================================================================
 
+A. RAZORPAY KEYS (Payment Processing)
 1. Go to: https://dashboard.razorpay.com/
 2. Login to your Razorpay account
 3. In the top-left, make sure "Test Mode" is selected
@@ -24,6 +25,14 @@ STEP 2: GET YOUR RAZORPAY TEST KEYS (RECOMMENDED FOR NOW)
 5. You'll see:
    - Key Id: rzp_test_XXXXXXXXXXXX
    - Key Secret: Click "Show" or "Generate" to reveal
+
+B. RESEND API KEY (Email Notifications)
+1. Go to: https://resend.com/
+2. Sign up or login to your account
+3. Go to API Keys section
+4. Create a new API key
+5. Copy the key (starts with "re_")
+6. Verify your domain (ccge.in) in the Domains section
 
 ================================================================================
 STEP 3: ADD KEYS TO .env.local FILE
@@ -33,12 +42,14 @@ Open the .env.local file you created and paste:
 
 NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_YOUR_KEY_ID_HERE
 RAZORPAY_KEY_SECRET=YOUR_KEY_SECRET_HERE
+RESEND_API_KEY=re_YOUR_RESEND_API_KEY_HERE
 
-Replace YOUR_KEY_ID_HERE and YOUR_KEY_SECRET_HERE with your actual keys from Step 2.
+Replace YOUR_KEY_ID_HERE, YOUR_KEY_SECRET_HERE, and YOUR_RESEND_API_KEY_HERE with your actual keys.
 
 Example:
 NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_1234567890ABCD
 RAZORPAY_KEY_SECRET=abcdefghijklmnopqrstuvwx123456
+RESEND_API_KEY=re_AbCdEfGhIjKlMnOpQrStUvWx123456
 
 ⚠️  IMPORTANT: Do NOT share these keys publicly or commit to git!
 

@@ -56,7 +56,36 @@ export default function CourseDetailsRightSide({ course }: IProps) {
             amount: paymentAmount,
             courseName: `${title} - ${selectedPaymentOption.label || `${selectedPaymentOption.months} Installment(s)`}`,
             courseId: id,
+            enrollmentId: newEnrollmentId,
             onSuccess: async (response) => {
+               // STEP 1: Verify payment signature with backend (CRITICAL SECURITY)
+               try {
+                  const verifyResponse = await fetch('/api/razorpay/verify', {
+                     method: 'POST',
+                     headers: { 'Content-Type': 'application/json' },
+                     body: JSON.stringify({
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_order_id: response.razorpay_order_id || '',
+                        razorpay_signature: response.razorpay_signature || '',
+                        enrollmentId: newEnrollmentId
+                     })
+                  });
+
+                  const verifyData = await verifyResponse.json();
+                  
+                  if (!verifyData.success) {
+                     console.error('Payment verification failed:', verifyData);
+                     alert('Payment verification failed. Please contact support with Payment ID: ' + response.razorpay_payment_id);
+                     return;
+                  }
+                  
+                  console.log('✅ Payment verified and captured:', verifyData);
+               } catch (verifyError) {
+                  console.error('Verification error:', verifyError);
+                  alert('Payment verification error. Please contact support.');
+                  return;
+               }
+
                // Update payment status in Google Sheets
                try {
                   await fetch('/api/enrollment/update-payment', {

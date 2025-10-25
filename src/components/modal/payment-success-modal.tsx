@@ -45,40 +45,40 @@ export default function PaymentSuccessModal({
         justifyContent: "center",
         zIndex: 99999,
         padding: "20px",
-        overflowY: "auto",
-        backdropFilter: "blur(5px)",
+        backdropFilter: "blur(8px)",
       }}
+      onClick={onHide}
     >
       <div
         className="payment-success-modal"
         style={{
           background: "white",
-          borderRadius: "20px",
-          maxWidth: "550px",
+          borderRadius: "24px",
+          maxWidth: "480px",
           width: "100%",
-          boxShadow: "0 25px 50px rgba(0, 0, 0, 0.3)",
+          boxShadow: "0 25px 50px rgba(0, 0, 0, 0.4)",
           position: "relative",
           overflow: "hidden",
           animation: "slideUp 0.4s ease-out",
         }}
+        onClick={(e) => e.stopPropagation()}
       >
-        {/* Success Header with Gradient */}
+        {/* Compact Success Header */}
         <div
           style={{
             background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-            padding: "40px 30px 30px",
+            padding: "30px 25px 25px",
             textAlign: "center",
             position: "relative",
           }}
         >
-          {/* Animated Success Icon */}
           <div
             style={{
-              width: "80px",
-              height: "80px",
+              width: "60px",
+              height: "60px",
               background: "white",
               borderRadius: "50%",
-              margin: "0 auto 20px",
+              margin: "0 auto 12px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -87,8 +87,8 @@ export default function PaymentSuccessModal({
             }}
           >
             <svg
-              width="50"
-              height="50"
+              width="36"
+              height="36"
               viewBox="0 0 24 24"
               fill="none"
               stroke="#10b981"
@@ -102,10 +102,10 @@ export default function PaymentSuccessModal({
 
           <h2
             style={{
-              fontSize: "32px",
+              fontSize: "24px",
               fontWeight: "800",
               color: "white",
-              marginBottom: "10px",
+              marginBottom: "6px",
               letterSpacing: "-0.5px",
             }}
           >
@@ -113,50 +113,32 @@ export default function PaymentSuccessModal({
           </h2>
           <p
             style={{
-              fontSize: "16px",
-              color: "rgba(255, 255, 255, 0.95)",
+              fontSize: "14px",
+              color: "rgba(255, 255, 255, 0.9)",
               margin: 0,
             }}
           >
-            Your enrollment is confirmed
+            Enrollment confirmed
           </p>
         </div>
 
-        {/* Content Section */}
-        <div style={{ padding: "35px 30px" }}>
-          {/* CCGE Logo */}
-          <div
-            style={{
-              textAlign: "center",
-              marginBottom: "30px",
-              paddingBottom: "25px",
-              borderBottom: "2px solid #f3f4f6",
-            }}
-          >
-            <Image
-              src={logo}
-              alt="CCGE Logo"
-              width={180}
-              height={60}
-              style={{ height: "auto" }}
-            />
-          </div>
-
-          {/* Course Info */}
+        {/* Compact Content Section */}
+        <div style={{ padding: "24px" }}>
+          {/* Compact Course Info */}
           <div
             style={{
               background: "linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)",
-              padding: "20px",
+              padding: "16px",
               borderRadius: "12px",
-              marginBottom: "25px",
+              marginBottom: "20px",
               border: "1px solid #bfdbfe",
             }}
           >
             <div
               style={{
-                fontSize: "13px",
+                fontSize: "11px",
                 color: "#6b7280",
-                marginBottom: "5px",
+                marginBottom: "4px",
                 fontWeight: "600",
                 textTransform: "uppercase",
                 letterSpacing: "0.5px",
@@ -166,7 +148,7 @@ export default function PaymentSuccessModal({
             </div>
             <div
               style={{
-                fontSize: "18px",
+                fontSize: "16px",
                 fontWeight: "700",
                 color: "var(--brand-blue-600)",
               }}
@@ -175,267 +157,160 @@ export default function PaymentSuccessModal({
             </div>
           </div>
 
-          {/* Payment Details - Gestalt: Law of Common Region */}
+          {/* Compact Payment Details */}
           <div
             style={{
               background: "#f9fafb",
-              padding: "20px",
+              padding: "14px",
               borderRadius: "12px",
-              marginBottom: "25px",
+              marginBottom: "16px",
             }}
           >
-            <h4
+            <div
               style={{
-                fontSize: "14px",
-                fontWeight: "700",
-                color: "#374151",
-                marginBottom: "15px",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: "12px",
               }}
             >
-              Payment Details
-            </h4>
-
-            {/* Law of Proximity - Group related info */}
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
-            >
-              <div
+              <span style={{ fontSize: "13px", color: "#6b7280", fontWeight: "600" }}>
+                Amount Paid
+              </span>
+              <span
                 style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
+                  fontSize: "24px",
+                  fontWeight: "800",
+                  color: "#10b981",
                 }}
               >
-                <span style={{ fontSize: "14px", color: "#6b7280" }}>
-                  Amount Paid
-                </span>
-                <span
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: "800",
-                    color: "#10b981",
-                  }}
-                >
-                  ₹{amount.toLocaleString("en-IN")}
-                </span>
+                ₹{amount.toLocaleString("en-IN")}
+              </span>
+            </div>
+
+            <div style={{ marginBottom: "10px" }}>
+              <div style={{ color: "#9ca3af", marginBottom: "4px", fontSize: "11px" }}>
+                Payment ID
               </div>
-
               <div
                 style={{
-                  padding: "12px",
+                  fontWeight: "600",
+                  color: "#374151",
+                  fontFamily: "monospace",
+                  fontSize: "11px",
+                  wordBreak: "break-all",
                   background: "white",
-                  borderRadius: "8px",
-                  border: "1px solid #e5e7eb",
+                  padding: "8px",
+                  borderRadius: "6px",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "11px",
-                    color: "#9ca3af",
-                    marginBottom: "4px",
-                  }}
-                >
-                  Payment ID
-                </div>
-                <div
-                  style={{
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    color: "#374151",
-                    fontFamily: "monospace",
-                    wordBreak: "break-all",
-                  }}
-                >
-                  {paymentId}
-                </div>
+                {paymentId}
               </div>
+            </div>
 
+            <div>
+              <div style={{ color: "#9ca3af", marginBottom: "4px", fontSize: "11px" }}>
+                Enrollment ID
+              </div>
               <div
                 style={{
-                  padding: "12px",
+                  fontWeight: "600",
+                  color: "#374151",
+                  fontFamily: "monospace",
+                  fontSize: "11px",
+                  wordBreak: "break-all",
                   background: "white",
-                  borderRadius: "8px",
-                  border: "1px solid #e5e7eb",
+                  padding: "8px",
+                  borderRadius: "6px",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "11px",
-                    color: "#9ca3af",
-                    marginBottom: "4px",
-                  }}
-                >
-                  Enrollment ID
-                </div>
-                <div
-                  style={{
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    color: "#374151",
-                    fontFamily: "monospace",
-                    wordBreak: "break-all",
-                  }}
-                >
-                  {enrollmentId}
-                </div>
+                {enrollmentId}
               </div>
             </div>
           </div>
 
-          {/* Screenshot Reminder - Von Restorff Effect */}
+          {/* Screenshot Reminder */}
           <div
             style={{
               background: "#fef3c7",
-              padding: "15px 18px",
+              padding: "12px",
               borderRadius: "10px",
-              marginBottom: "25px",
+              marginBottom: "16px",
               border: "1px solid #fbbf24",
+              fontSize: "12px",
+              color: "#78350f",
               display: "flex",
-              gap: "12px",
+              gap: "10px",
               alignItems: "start",
             }}
           >
-            <div style={{ fontSize: "20px", flexShrink: 0 }}>📸</div>
+            <span style={{ fontSize: "18px", flexShrink: 0 }}>📸</span>
             <div>
-              <div
-                style={{
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  color: "#92400e",
-                  marginBottom: "3px",
-                }}
-              >
-                Save for Your Records
-              </div>
-              <div
-                style={{
-                  fontSize: "12px",
-                  color: "#78350f",
-                  lineHeight: "1.5",
-                }}
-              >
-                Take a screenshot of this page for future reference. Payment
-                details will also be sent to your email.
+              <div style={{ fontWeight: "600", marginBottom: "2px" }}>Save for Your Records</div>
+              <div style={{ fontSize: "11px", lineHeight: "1.4" }}>
+                Take a screenshot for future reference. Payment details will also be emailed.
               </div>
             </div>
           </div>
 
-          {/* What's Next - Miller's Law (3 items) */}
-          <div style={{ marginBottom: "25px" }}>
-            <h4
-              style={{
-                fontSize: "14px",
-                fontWeight: "700",
-                color: "#374151",
-                marginBottom: "15px",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-              }}
-            >
-              What Happens Next?
-            </h4>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-            >
-              {[
-                {
-                  icon: "📧",
-                  text: "You will receive a confirmation email with payment receipt",
-                },
-                {
-                  icon: "🎓",
-                  text: "Course access details will be sent within 24-48 hours",
-                },
-                {
-                  icon: "📞",
-                  text: "Our team will contact you for onboarding",
-                },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: "flex",
-                    gap: "12px",
-                    alignItems: "start",
-                    padding: "10px",
-                    background: "#f9fafb",
-                    borderRadius: "8px",
-                  }}
-                >
-                  <div style={{ fontSize: "18px", flexShrink: 0 }}>
-                    {item.icon}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "13px",
-                      color: "#4b5563",
-                      lineHeight: "1.5",
-                    }}
-                  >
-                    {item.text}
-                  </div>
-                </div>
-              ))}
+          {/* Next Steps */}
+          <div
+            style={{
+              background: "#f0fdf4",
+              padding: "12px",
+              borderRadius: "10px",
+              marginBottom: "20px",
+              border: "1px solid #86efac",
+              fontSize: "12px",
+              color: "#166534",
+            }}
+          >
+            <div style={{ fontWeight: "600", marginBottom: "6px" }}>📧 What&apos;s Next?</div>
+            <div style={{ fontSize: "11px", lineHeight: "1.5" }}>
+              You&apos;ll receive a confirmation email with course access details within 24-48 hours.
             </div>
           </div>
 
-          {/* Actions - Fitts's Law (large targets) */}
-          <div style={{ display: "flex", gap: "12px" }}>
-            <button
-              onClick={onHide}
-              style={{
-                flex: 1,
-                padding: "16px",
-                background: "var(--brand-blue-600)",
-                color: "white",
-                border: "none",
-                borderRadius: "10px",
-                fontSize: "15px",
-                fontWeight: "700",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                boxShadow: "0 4px 12px rgba(47, 118, 183, 0.3)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "var(--brand-blue-700)";
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow =
-                  "0 6px 16px rgba(47, 118, 183, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "var(--brand-blue-600)";
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow =
-                  "0 4px 12px rgba(47, 118, 183, 0.3)";
-              }}
-            >
-              Done
-            </button>
-          </div>
+          {/* Compact Button */}
+          <button
+            onClick={onHide}
+            style={{
+              width: "100%",
+              padding: "14px",
+              background: "var(--brand-blue-600)",
+              color: "white",
+              border: "none",
+              borderRadius: "12px",
+              fontSize: "15px",
+              fontWeight: "700",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              boxShadow: "0 4px 12px rgba(47, 118, 183, 0.3)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--brand-blue-700)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 6px 16px rgba(47, 118, 183, 0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "var(--brand-blue-600)";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(47, 118, 183, 0.3)";
+            }}
+          >
+            Done
+          </button>
 
-          {/* Contact Support */}
           <p
             style={{
-              fontSize: "12px",
+              fontSize: "11px",
               color: "#9ca3af",
               textAlign: "center",
-              marginTop: "20px",
+              marginTop: "16px",
               marginBottom: 0,
             }}
           >
-            Questions? Contact us at{" "}
-            <a
-              href="mailto:info@ccge.in"
-              style={{
-                color: "var(--brand-blue-600)",
-                textDecoration: "none",
-                fontWeight: "600",
-              }}
-            >
-              info@ccge.in
-            </a>
+            Questions? <a href="mailto:info@ccge.in" style={{ color: "var(--brand-blue-600)", textDecoration: "none", fontWeight: "600" }}>Contact us</a>
           </p>
         </div>
       </div>
