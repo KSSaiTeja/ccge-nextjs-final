@@ -224,8 +224,8 @@ export async function POST(request: NextRequest) {
             ? `🎉 Payment Successful - Welcome to ${emailData.courseName}!`
             : `⚠️ Payment Failed - Action Required for ${emailData.courseName}`;
 
-          // Generate HTML email (you can import this function)
-          const { generatePaymentSuccessEmail, generatePaymentFailedEmail } = await import("../../send-email/route");
+          // Generate HTML email
+          const { generatePaymentSuccessEmail, generatePaymentFailedEmail } = await import("@/lib/email-templates");
           const html = emailData.type === "success" 
             ? generatePaymentSuccessEmail(emailData)
             : generatePaymentFailedEmail(emailData);
